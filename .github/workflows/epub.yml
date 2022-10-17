@@ -7,15 +7,17 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v3
-      - uses: docker://pandoc/core:2.9
+      - uses: docker://pandoc/core:latest
         with:
           args: >-
-            --output=wisdom.epub
             wisdom.md
+            --metadata title="Merlin's Wisdom Project"
+            --metadata author="Merlin Mann"
+            -o wisdom.epub
       - name: Archive code coverage results
         uses: actions/upload-artifact@v3
         with:
-          name: epub
+          name: ebook
           path: wisdom.epub
             
             
