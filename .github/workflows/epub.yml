@@ -11,7 +11,7 @@ jobs:
         id: cleanup
         run: |
           sed -i 's/\/i\//.\/i\//g' wisdom.md                             # Add a . before /i/ paths so pandoc can find them
-          sed -i -E 's/<img(.+)">/<img\1"\/>/g' wisdom.md     # Self-close the image tags, pandoc whines if we have unclosed img tags
+          sed -i -E 's/<img([^>]*)>/<img\1\/>/g' wisdom.md     # Self-close the image tags, pandoc whines if we have unclosed img tags
       - uses: docker://pandoc/core:latest
         with:
           args: >-
