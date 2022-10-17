@@ -12,6 +12,11 @@ jobs:
           args: >-
             --output=wisdom.epub
             wisdom.md
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v3
+        with:
+          name: epub
+          path: output/wisdom.epub
             
             
             
